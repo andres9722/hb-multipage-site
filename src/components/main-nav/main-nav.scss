@@ -1,20 +1,31 @@
 @import '../shared/variables.scss';
 @import '../shared/typography.scss';
 @import '../shared/base.scss';
+@import '../shared/mixins.scss';
 
-.main-header {
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1em;
+  padding: .5em 1em;
+  border-bottom: .2px solid rgba($black, .5);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include from(1024px) {
+      width: 100%;
+      max-width: $max-width;
+      margin: 0 auto;
+    }
+  }
 
   &__logo {
-    width: 200px;
-    height: 50px;
+    width: 175px;
+    height: 40px;
   }
 
   &__button {
@@ -22,24 +33,42 @@
     width: 25px;
     height: 2px;
 
+    @include from(1024px) {
+      display: none;
+    }
+
+    &.animated {
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+    }
+
     &::before {
       content: '';
       position: absolute;
-      width: 25px;
+      width: 22px;
       height: 2px;
-      top: -7px;
+      top: -6px;
       left: 0;
       background-color: $font-color;
+      transition: transform .3s ease;
     }
 
     &::after {
       content: '';
       position: absolute;
-      width: 25px;
+      width: 22px;
       height: 2px;
-      top: 7px;
+      top: 6px;
       left: 0;
       background-color: $font-color;
+      transition: transform .3s ease;
     }
   }
 
@@ -56,19 +85,70 @@
       top: 0;
       left: 0;
     }
+
+    @include from($large) {
+      display: none;
+    }
   }
 
-  .main-nav {
+  .nav {
     color: $font-color;
     background: $principal-color;
     position: fixed;
-    top: 50px;
+    top: 56.2px;
     left: 0;
     width: 100%;
     height: 100vh;
     padding: 1em;
+    transform: translate(-100%);
+    transition: transform .3s ease;
 
-    .main-menu {
+    @include from(1024px) {
+      position: relative;
+      top: 0;
+      background:transparent;
+      z-index: 20;
+      height: 100%;
+      transform: translate(0);
+      width: auto;
+      padding: 0;
+    }
+
+    &.show-menu {
+      transform: translate(0);
+
+      .menu__item {
+        animation: menu .6s ease both;
+
+        @for $i from 0 through 5 {
+          &:nth-child(#{$i}) {
+           animation-delay: #{$i * 0.05}s;
+          }
+        }
+
+        @keyframes menu {
+          from {
+            transform: translate(-100%);
+          }
+
+          to {
+            transform: translate(0);
+          }
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+
+      @include from($large) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        text-align: center;
+      }
 
       &__link {
         position: relative;
@@ -77,6 +157,22 @@
         letter-spacing: .5px;
         text-shadow: 0 1px 2px $black;
 
+        @include from(1024px) {
+          color: $font-color;
+          text-shadow: 0 0 0 white;
+          text-transform: capitalize;
+
+          &:hover {
+            color: $principal-color;
+          }
+        }
+
+        &.animated {
+          &::before {
+            transform: rotateY(-180deg);
+          }
+        }
+
         &::before {
           content: url('https://image.flaticon.com/icons/svg/118/118738.svg');
           position: absolute;
@@ -84,36 +180,65 @@
           right: -1.2em;
           width: 12px;
           height: 12px;
-          opacity: .8;
+          opacity: .85;
           filter: invert(100%);
+          transition: transform .8s ease;
+          transform-origin: (0%, 100%);
+
+          @include from($large) {
+            filter: invert(0);
+          }
         }
       }
 
       &__item {
         position: relative;
         font-size: 1.2em;
-        margin-bottom: 1.5em;
-        padding-bottom: .5em;
-        border-bottom:.5px solid rgba($black, .6);
+        margin-bottom: 1em;
+        padding-bottom: .2em;
+        border-bottom:.5px solid rgba($body-bg, .6);
+
+        @include from(1024px) {
+          font-size: 1em;
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
 
         .submenu {
           padding: .5em;
-          display: none;
-          background-color: darken($principal-color, 1);
+          background-color: darken($principal-color, 2);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height .5s ease;
+          transition: transform .3s ease;
+          transform: scaleY(0);
+          position: relative;
+          top: 0;
+
+          @include from($large) {
+            padding: 0;
+            max-height: auto;
+            overflow: auto;
+            transform: scaleY(1);
+            bottom: 0;
+          }
 
           &.show {
-            display: block;
+            max-height: 999px;
+            transform: scaleY(1);
           }
 
           &__item {
-
+            margin-bottom: .3em;
           }
 
           &__link {
             color: $body-bg;
             font-size: .8em;
-            opacity: .8;
+            opacity: .85;
             letter-spacing: .5px;
+            text-shadow: 1px 0 2px black;
           }
         }
       }
