@@ -1,0 +1,7 @@
+ul.main-menu
+  each el in mainNavData.links
+    li.main-menu__item
+      a.main-menu__link= el.label
+      ul.submenu: each subel in el.links
+        li.submenu__item
+          a.submenu__link(href!= subel.href)= subel.label
