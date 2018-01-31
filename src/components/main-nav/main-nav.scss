@@ -8,11 +8,54 @@
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
 
   &__logo {
     width: 200px;
     height: 50px;
+  }
+
+  &__button {
+    position: relative;
+    width: 25px;
+    height: 2px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 2px;
+      top: -7px;
+      left: 0;
+      background-color: $font-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 2px;
+      top: 7px;
+      left: 0;
+      background-color: $font-color;
+    }
+  }
+
+  &__search {
+    position: relative;
+    width: 25px;
+    height: 25px;
+
+    &::before {
+      content: url('https://image.flaticon.com/icons/svg/164/164995.svg');
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 0;
+      left: 0;
+    }
   }
 
   .main-nav {
