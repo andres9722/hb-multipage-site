@@ -54,8 +54,9 @@
         border-bottom:.5px solid rgba($black, .6);
 
         .submenu {
-          padding-left: .5em;
+          padding: .5em;
           display: none;
+          background-color: darken($principal-color, 1);
 
           &.show {
             display: block;
@@ -69,6 +70,7 @@
             color: $body-bg;
             font-size: .8em;
             opacity: .8;
+            letter-spacing: .5px;
           }
         }
       }
