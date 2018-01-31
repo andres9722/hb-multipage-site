@@ -2,6 +2,20 @@
 @import '../shared/typography.scss';
 @import '../shared/base.scss';
 
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__logo {
+    width: 200px;
+    height: 50px;
+  }
+}
+
 .main-nav {
   color: $font-color;
   background: $principal-color;
@@ -10,7 +24,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  padding: 0.5em 1em;
+  padding: 1em;
 
   .main-menu {
 
@@ -36,7 +50,9 @@
     &__item {
       position: relative;
       font-size: 1.2em;
-      margin-bottom: .5em;
+      margin-bottom: 1.5em;
+      padding-bottom: .5em;
+      border-bottom:.5px solid rgba($black, .6);
 
       .submenu {
         padding-left: .5em;

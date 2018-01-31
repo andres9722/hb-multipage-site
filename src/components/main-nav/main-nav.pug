@@ -1,7 +1,10 @@
-ul.main-menu
-  each el in links
-    li.main-menu__item
-      a.main-menu__link= el.label
-      ul.submenu: each subel in el.links
-        li.submenu__item
-          a.submenu__link(href!= subel.href)= subel.label
+.main-header__logo
+  img(src!= logo.img, alt="logo", srcset="")
+nav.main-nav
+  ul.main-menu
+    each el in links
+      li.main-menu__item
+        a.main-menu__link= el.label
+        ul.submenu: each subel in el.links
+          li.submenu__item
+            a.submenu__link(href!= subel.href)= subel.label
