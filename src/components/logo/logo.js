@@ -1,15 +1,10 @@
 import './logo.scss'
 import template from './logo.pug'
+import mainNavData from '../../data/main-nav.json'
 
 export default class Logo {
   constructor (node) {
     this.node = document.querySelector(node)
-    this.html(template)
-  }
-
-  html (template) {
-    let Parser = new DOMParser()
-    let element = Parser.parseFromString(template, 'text/html').body.children[0]
-    this.node.appendChild(element)
+    this.node.innerHTML = template(mainNavData)
   }
 }

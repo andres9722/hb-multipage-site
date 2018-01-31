@@ -1,17 +1,12 @@
 import './main-nav.scss'
 import template from './main-nav.pug'
+import mainNavData from '../../data/main-nav.json'
 
 export default class MainNav {
   constructor (node) {
     this.node = document.querySelector(node)
-    this.html(template)
+    this.node.innerHTML = template(mainNavData)
     this.events()
-  }
-
-  html (template) {
-    let Parser = new DOMParser()
-    let element = Parser.parseFromString(template, 'text/html').body.children[0]
-    this.node.appendChild(element)
   }
 
   events () {
