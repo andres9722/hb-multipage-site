@@ -6,25 +6,38 @@ export default class MainNav {
   constructor (node) {
     this.node = document.querySelector(node)
     this.node.innerHTML = template(mainNavData)
-    this.deployMenuEvent()
+    this.items = document.querySelectorAll('.menu__item')
+    this.links = document.querySelectorAll('.menu__link')
+    this.deploySubmenuEvent()
+    this.deploySubmenuEventLarge()
     this.toggleMenuEvent()
   }
 
-  deployMenuEvent () {
-    let menus = document.querySelectorAll('.menu__item')
-    let links = document.querySelectorAll('.menu__link')
-    menus.forEach((_, index, array) => {
+  deploySubmenuEvent () {
+    this.items.forEach((_, index, array) => {
       array[index].addEventListener('click', e => {
         this.resetClass(index)
         array[index].querySelector('.submenu').classList.toggle('show')
-        links[index].classList.toggle('animated')
+        this.links[index].classList.toggle('animated')
       })
     })
   }
 
+  deploySubmenuEventLarge () {
+    if (window.screen.width >= 1024) {
+      this.items.forEach((_, index, array) => {
+        array[index].addEventListener('mouseenter', e => {
+          this.resetClass(index)
+          array[index].querySelector('.submenu').classList.toggle('show')
+          this.links[index].classList.toggle('animated')
+        })
+      })
+    }
+  }
+
   toggleMenuEvent () {
-    let toggle = document.querySelector('.header__button')
-    let nav = document.querySelector('.nav')
+    const toggle = document.querySelector('.header__button')
+    const nav = document.querySelector('.nav')
     toggle.addEventListener('click', e => {
       this.resetClass()
       nav.classList.toggle('show-menu')
@@ -33,8 +46,7 @@ export default class MainNav {
   }
 
   resetClass (i) {
-    let menus = document.querySelectorAll('.menu__item')
-    menus.forEach((_, index, array) => {
+    this.items.forEach((_, index, array) => {
       if (i !== index) {
         array[index].querySelector('.submenu').classList.remove('show')
       }
