@@ -1,8 +1,7 @@
 .header__container
   .header__button
   a.header__link(href!= logo.link)
-    .header__logo
-      img(src!= logo.img, alt="logo", srcset="")
+      img.header__logo(src!= logo.img, alt="logo", srcset="")
   .header__search
   nav.nav
     ul.menu
@@ -12,7 +11,3 @@
           ul.submenu: each subel in el.links
             li.submenu__item
               a.submenu__link(href!= subel.href)= subel.label
-    .header__footer
-      h2.header__footer-info Shaw Business
-      p.header__footer-direction Suite 100, 3636 - 23rd Street NE
-      p.header__footer-city Calgary, Alberta T2E 8Z5

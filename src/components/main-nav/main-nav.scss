@@ -6,14 +6,14 @@
 .header {
   width: 100%;
   padding: .5em 1em;
-  border-bottom: .2px solid rgba($black, .5);
+  box-shadow: 0 1px 3px color(border-color);
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    @include from(1024px) {
+    @include from($large) {
       width: 100%;
       max-width: $max-width;
       margin: 0 auto;
@@ -22,6 +22,10 @@
 
   &__logo {
     height: 40px;
+
+    @include from($large) {
+      height: 50px;
+    }
   }
 
   &__button {
@@ -29,20 +33,8 @@
     width: 25px;
     height: 2px;
 
-    @include from(1024px) {
+    @include from($large) {
       display: none;
-    }
-
-    &.animated {
-      &::before {
-        transform: rotate(45deg);
-        top: 0;
-      }
-
-      &::after {
-        transform: rotate(-45deg);
-        top: 0;
-      }
     }
 
     &::before {
@@ -52,7 +44,7 @@
       height: 2px;
       top: -6px;
       left: 0;
-      background-color: $font-color;
+      background-color: color(font-color);
       transition: transform .3s ease;
     }
 
@@ -63,8 +55,20 @@
       height: 2px;
       top: 6px;
       left: 0;
-      background-color: $font-color;
+      background-color: color(font-color);
       transition: transform .3s ease;
+    }
+
+    &--animated {
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
     }
   }
 
@@ -88,7 +92,7 @@
   }
 
   .nav {
-    background: $principal-color;
+    background: color(principal-color);
     position: fixed;
     top: 56.2px;
     left: 0;
@@ -98,9 +102,11 @@
     transform: translate(-100%);
     transition: transform .3s ease;
 
-    @include from(1024px) {
+    @include from($large) {
       position: relative;
       top: 0;
+      left: initial;
+      right: 1.5em;
       background:transparent;
       z-index: 20;
       height: 100%;
@@ -109,7 +115,7 @@
       padding: 0;
     }
 
-    &.show-menu {
+    &--show-menu {
       transform: translate(0);
 
       .menu__item {
@@ -146,21 +152,21 @@
         color: white;
         text-transform: uppercase;
         letter-spacing: .5px;
-        text-shadow: 0 1px 2px $black;
+        text-shadow: 0 1px 2px color(black);
         font-family: $font-title;
 
 
-        @include from(1024px) {
-          color: $font-color;
+        @include from($large) {
+          color: color(font-color);
           text-shadow: 0 0 0 white;
           text-transform: capitalize;
 
           &:hover {
-            color: $principal-color;
+            color: color(principal-color);
           }
         }
 
-        &.animated {
+        &--animated {
           &::before {
             transform: rotateY(-180deg);
           }
@@ -191,10 +197,10 @@
         position: relative;
         font-size: 1.2em;
         margin-bottom: 1em;
-        border-bottom:.5px solid rgba($body-bg, .6);
+        border-bottom:.5px solid rgba(color(body-bg), .6);
 
-        @include from(1024px) {
-          font-size: 1em;
+        @include from($large) {
+          font-size: 1.1em;
           margin: 0;
           padding: 0;
           border: 0;
@@ -202,7 +208,7 @@
 
         .submenu {
           padding: .5em;
-          background-color: darken($principal-color,0);
+          background-color: color(principal-color);
           max-height: 0;
           overflow: hidden;
           transition: max-height .5s ease;
@@ -212,55 +218,42 @@
 
           @include from($large) {
             position: fixed;
-            top: 2.55em;
+            top: 2.8em;
             background: white;
             padding: 0.5em 1em;
-            box-shadow: 1px 0 3px $border-color;
+            box-shadow: 1px 0 3px color(border-color);
+            width: 200px;
           }
 
-          &.show {
+          &--show {
             max-height: 999px;
             transform: scaleY(1);
           }
 
           &__item {
-            margin-bottom: .3em;
+            margin-bottom: .4em;
           }
 
           &__link {
-            color: $body-bg;
+            color: color(body-bg);
             font-size: .8em;
             opacity: .85;
             letter-spacing: .5px;
             text-shadow: 1px 0 2px black;
 
             @include from($large) {
-              color: $font-color;
+              color: color(font-color);
               text-shadow: 0 0 0 white;
+              transition: color .3s ease;
+              font-size: 0.9em;
+
+              &:hover {
+                color: color(principal-color);
+              }
             }
           }
         }
       }
-    }
-  }
-
-  &__footer {
-    color: $white;
-    opacity: .8;
-    margin-top: 2em;
-
-
-    &-info {
-      font-size: 1em;
-      text-transform: uppercase;
-    }
-
-    &-direction, &-city {
-      font-size: 0.8em;
-    }
-
-    @include from($large) {
-      display: none;
     }
   }
 }

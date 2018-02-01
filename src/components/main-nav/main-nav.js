@@ -4,51 +4,45 @@ import mainNavData from '../../data/main-nav.json'
 
 export default class MainNav {
   constructor (node) {
+    this.large = 1024
     this.node = document.querySelector(node)
     this.node.innerHTML = template(mainNavData)
-    this.items = document.querySelectorAll('.menu__item')
-    this.links = document.querySelectorAll('.menu__link')
+    this.items = this.node.querySelectorAll('.menu__item')
+    this.links = this.node.querySelectorAll('.menu__link')
+    this.toggle = document.querySelector('.header__button')
+    this.nav = document.querySelector('.nav')
     this.deploySubmenuEvent()
-    this.deploySubmenuEventLarge()
     this.toggleMenuEvent()
   }
 
+  static get states () {
+    return {
+      menuLinkAnimated: 'menu-link--animated'
+    }
+  }
+
   deploySubmenuEvent () {
-    this.items.forEach((_, index, array) => {
-      array[index].addEventListener('click', e => {
+    this.items.forEach((item, index, array) => {
+      item.addEventListener('click', e => {
         this.resetClass(index)
-        array[index].querySelector('.submenu').classList.toggle('show')
-        this.links[index].classList.toggle('animated')
+        item.querySelector('.submenu').classList.toggle('submenu--show')
+        this.links[index].classList.toggle(MainNav.states.menuLinkAnimated)
       })
     })
   }
 
-  deploySubmenuEventLarge () {
-    if (window.screen.width >= 1024) {
-      this.items.forEach((_, index, array) => {
-        array[index].addEventListener('mouseenter', e => {
-          this.resetClass(index)
-          array[index].querySelector('.submenu').classList.toggle('show')
-          this.links[index].classList.toggle('animated')
-        })
-      })
-    }
-  }
-
   toggleMenuEvent () {
-    const toggle = document.querySelector('.header__button')
-    const nav = document.querySelector('.nav')
-    toggle.addEventListener('click', e => {
+    this.toggle.addEventListener('click', e => {
       this.resetClass()
-      nav.classList.toggle('show-menu')
-      toggle.classList.toggle('animated')
+      this.nav.classList.toggle('nav--show-menu')
+      this.toggle.classList.toggle('header__button--animated')
     })
   }
 
   resetClass (i) {
-    this.items.forEach((_, index, array) => {
+    this.items.forEach((item, index, array) => {
       if (i !== index) {
-        array[index].querySelector('.submenu').classList.remove('show')
+        array[index].querySelector('.submenu').classList.remove('submenu--show')
       }
     })
   }
