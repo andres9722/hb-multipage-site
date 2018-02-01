@@ -4,9 +4,6 @@
 @import '../shared/mixins.scss';
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   padding: .5em 1em;
   border-bottom: .2px solid rgba($black, .5);
@@ -24,7 +21,6 @@
   }
 
   &__logo {
-    width: 175px;
     height: 40px;
   }
 
@@ -92,7 +88,6 @@
   }
 
   .nav {
-    color: $font-color;
     background: $principal-color;
     position: fixed;
     top: 56.2px;
@@ -110,7 +105,7 @@
       z-index: 20;
       height: 100%;
       transform: translate(0);
-      width: auto;
+      width: 380px;
       padding: 0;
     }
 
@@ -143,15 +138,11 @@
       flex-direction: column;
 
       @include from($large) {
-        display: flex;
-        align-items: center;
         justify-content: space-between;
         flex-direction: row;
-        text-align: center;
       }
 
       &__link {
-        position: relative;
         color: white;
         text-transform: uppercase;
         letter-spacing: .5px;
@@ -177,7 +168,7 @@
           content: url('https://image.flaticon.com/icons/svg/118/118738.svg');
           position: absolute;
           top: 0;
-          right: -1.2em;
+          right: .5em;
           width: 12px;
           height: 12px;
           opacity: .85;
@@ -187,6 +178,9 @@
 
           @include from($large) {
             filter: invert(0);
+            width: 10px;
+            height: 10px;
+            right: -1em;
           }
         }
       }
@@ -195,7 +189,6 @@
         position: relative;
         font-size: 1.2em;
         margin-bottom: 1em;
-        padding-bottom: .2em;
         border-bottom:.5px solid rgba($body-bg, .6);
 
         @include from(1024px) {
@@ -207,21 +200,20 @@
 
         .submenu {
           padding: .5em;
-          background-color: darken($principal-color, 2);
+          background-color: darken($principal-color,0);
           max-height: 0;
           overflow: hidden;
           transition: max-height .5s ease;
           transition: transform .3s ease;
           transform: scaleY(0);
           position: relative;
-          top: 0;
 
           @include from($large) {
-            padding: 0;
-            max-height: auto;
-            overflow: auto;
-            transform: scaleY(1);
-            bottom: 0;
+            position: fixed;
+            top: 2.55em;
+            background: white;
+            padding: 0.5em 1em;
+            box-shadow: 1px 0 3px $border-color;
           }
 
           &.show {
@@ -239,6 +231,11 @@
             opacity: .85;
             letter-spacing: .5px;
             text-shadow: 1px 0 2px black;
+
+            @include from($large) {
+              color: $font-color;
+              text-shadow: 0 0 0 white;
+            }
           }
         }
       }
