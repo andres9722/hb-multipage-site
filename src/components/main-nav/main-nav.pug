@@ -1,12 +1,1 @@
-.main-header__button
-.main-header__logo
-  img(src!= logo.img, alt="logo", srcset="")
-.main-header__search
-nav.main-nav
-  ul.main-menu
-    each el in links
-      li.main-menu__item
-        a.main-menu__link= el.label
-        ul.submenu: each subel in el.links
-          li.submenu__item
-            a.submenu__link(href!= subel.href)= subel.label
+h1= name
