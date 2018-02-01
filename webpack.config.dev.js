@@ -31,6 +31,16 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        loader: 'standard-loader',
+        exclude: /(node_modules|bower_components)/,
+        options: {
+          error: false,
+          snazzy: true
+        }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
@@ -59,8 +69,13 @@ module.exports = {
       {
         include: /\.pug/,
         use: [ {loader: 'pug-loader'}]
+      },
+      {
+        test: /\s[a|c]ss$/,
+        exclude: /node_modules/,
+        loader: 'sasslint'
       }
-    ]
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
