@@ -6,6 +6,21 @@ export default class MainNav {
   constructor (node) {
     this.node = document.querySelector(node)
     this.node.innerHTML = template(mainNavData)
+    this.items = document.querySelectorAll('.menu__item')
+    this.links = document.querySelectorAll('.menu__link')
+    this.deploySubmenuEvent()
+    this.deploySubmenuEventLarge()
+    this.toggleMenuEvent()
+  }
+
+  deploySubmenuEvent () {
+    this.items.forEach((_, index, array) => {
+      array[index].addEventListener('click', e => {
+        this.resetClass(index)
+        array[index].querySelector('.submenu').classList.toggle('show')
+        this.links[index].classList.toggle('animated')
+      })
+    })
   }
 
   deploySubmenuEventLarge () {
