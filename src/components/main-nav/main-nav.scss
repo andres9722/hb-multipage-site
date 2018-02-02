@@ -186,7 +186,7 @@
         }
 
         &::before {
-          content: url('https://image.flaticon.com/icons/svg/118/118738.svg');
+          content: url('https://image.flaticon.com/icons/svg/130/130900.svg');
           position: absolute;
           top: 0;
           right: .5em;
@@ -199,8 +199,8 @@
 
           @include from($large) {
             filter: invert(0);
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             right: -1em;
           }
         }
