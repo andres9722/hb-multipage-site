@@ -17,7 +17,7 @@ export default class MainNav {
 
   static get states () {
     return {
-      menuLinkAnimated: 'menu-link--animated'
+      menuLinkAnimated: 'menu__link--animated'
     }
   }
 
