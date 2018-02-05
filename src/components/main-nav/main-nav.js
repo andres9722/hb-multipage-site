@@ -4,7 +4,6 @@ import mainNavData from '../../data/main-nav.json'
 
 export default class MainNav {
   constructor (node) {
-    this.large = 1024
     this.node = document.querySelector(node)
     this.node.innerHTML = template(mainNavData)
     this.items = this.node.querySelectorAll('.menu__item')
