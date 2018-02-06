@@ -1,3 +1,76 @@
 {
-  "name": "Andres"
+  "logo": {
+    "img": "https://camo.githubusercontent.com/2ec5aafd9d3a576b465493eaae06ce996e52fb6a/68747470733a2f2f63646e2e737667706f726e2e636f6d2f6c6f676f732f73616e6974792e737667",
+    "link": "/"
+  },
+  "links": [
+    {
+      "label": "Internet",
+      "links": [
+        {
+          "label": "SmartWifi",
+          "href": "/smartwifi"
+        },
+        {
+          "label": "Business Internet",
+          "href": "/bussinesinternet"
+        },
+        {
+          "label": "SmartSecurity",
+          "href": "/smartsecurity"
+        },
+        {
+          "label": "SmartSurveillance",
+          "href": "/smartsurveillance"
+        }
+      ]
+    },
+    {
+      "label": "Voice",
+      "links": [
+        {
+          "label": "SmartVoice",
+          "href": "/smartvoice"
+        },
+        {
+          "label": "Business Phone",
+          "href": "/bussinesphone"
+        },
+        {
+          "label": "Long Distance",
+          "href": "/longdistance"
+        }
+      ]
+    },
+    {
+      "label": "Television",
+      "links": [
+        {
+          "label": "Business TV",
+          "href": "/businesstv"
+        },
+        {
+          "label": "TV Programming",
+          "href": "/tvprogramming"
+        }
+      ]
+    },
+    {
+      "label": "Network",
+      "links": [
+        {
+          "label": "Fiber Internet",
+          "href": "/fiberinternet"
+        },
+        {
+          "label": "Data Connectivity",
+          "href": "/dataconnectivity"
+        },
+        {
+          "label": "Broadcast Video",
+          "href": "/roadcastvideo"
+        }
+      ]
+    }
+  ]
 }

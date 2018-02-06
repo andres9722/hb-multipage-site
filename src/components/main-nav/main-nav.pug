@@ -1,1 +1,14 @@
-h1= name
+.header__container
+  .header__button
+    span.header__button--span
+  a.header__link(href!= logo.link)
+      img.header__logo(src!= logo.img, alt="logo", srcset="")
+  .header__search
+  nav.nav
+    ul.menu
+      each el in links
+        li.menu__item
+          a.menu__link= el.label
+          ul.submenu: each subel in el.links
+            li.submenu__item
+              a.submenu__link(href!= subel.href)= subel.label
