@@ -58,7 +58,7 @@ module.exports = {
       },
       {
         include: /\.pug/,
-        use: [ {loader: 'pug-loader'}]
+        use: [{loader: 'pug-loader'}]
       }
     ]
   },

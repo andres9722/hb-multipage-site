@@ -8,8 +8,8 @@ export default class MainNav {
     this.node.innerHTML = template(mainNavData)
     this.items = this.node.querySelectorAll('.menu__item')
     this.links = this.node.querySelectorAll('.menu__link')
-    this.toggle = document.querySelector('.header__button')
-    this.nav = document.querySelector('.nav')
+    this.toggle = this.node.querySelector('.header__button')
+    this.nav = this.node.querySelector('.nav')
     this.deploySubmenuEvent()
     this.toggleMenuEvent()
   }
