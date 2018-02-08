@@ -74,23 +74,23 @@
     }
   ],
   "header": "SmartWiFi",
-  "description": "Manage your business, not your WiFi",
+  "description": "WiFi so easy to manage, you can focus on your business",
   "cta": {
     "label": "Learn more",
-    "url": "/learmore"
+    "url": "/smartwifi"
   },
   "images": {
     "small": {
-      "url": "../assets/img/hero-small.PNG",
-      "description": ""
+      "url": "../assets/img/hero2-small.jpeg",
+      "description": "image-hero"
     },
     "medium": {
-      "url": "../assets/img/hero-medium.jpeg",
-      "description": ""
+      "url": "../assets/img/hero2-medium.jpeg",
+      "description": "image-hero"
     },
     "large": {
-      "url": "../assets/img/hero-large.jpeg",
-      "description": ""
+      "url": "../assets/img/hero2-large.jpeg",
+      "description": "image-hero"
     }
   }
 }

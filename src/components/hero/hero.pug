@@ -1,7 +1,7 @@
 picture.hero__img
   source(media="(min-width: 640px)", srcset!= images.medium.url, sizes="")
   source(media="(min-width: 1024px)", srcset!= images.large.url, sizes="")
-  img(src!= images.small.url , alt="", srcset="")
+  img.hero__img-img(src!= images.small.url , alt!= images.small.description, srcset="")
 .hero__info
   h1.hero__info-title= header
   p.hero__info-description= description
