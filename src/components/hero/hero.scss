@@ -1,0 +1,88 @@
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+@import '../shared/mixins.scss';
+
+.hero {
+  position: relative;
+  height: 80vh;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(color(black), rgba(color(principal-color), .3));
+    opacity: .3;
+  }
+
+  &__info {
+    background: rgba(color(black), .3);
+    color: color(white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 1em;
+
+    @include from($medium) {
+      padding: 5em 0;
+      border: 0;
+    }
+
+    &-title {
+      font-size: 2.6em;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 1px color(black);
+
+      @include from($medium) {
+        font-size: 3em;
+      }
+
+      @include from($large) {
+        font-size: 3.5em;
+        text-shadow: 0 4px 2px color(black);
+      }
+    }
+
+    &-description {
+      margin: 1em 0;
+      text-align: center;
+      opacity: .9;
+      font:  {
+        size: 1.2em;
+        family: $font-title;
+      }
+
+      @include from($medium) {
+        font-size: 1.7em;
+      }
+
+      @include from($large) {
+        font-size: 1.7em;
+        text-shadow: 0 2px 2px color(black);
+      }
+    }
+
+    &-cta {
+      color: color(white);
+      background-color: color(principal-color);
+      padding: .5em 1em;
+      border: 2px solid color(white);
+      text-transform: uppercase;
+      border-radius: 5px;
+      margin-top: 2em;
+
+      @include from($large) {
+        transition: background-color .3s ease;
+        &:hover {
+          background-color:color(secondary-color);
+        }
+      }
+    }
+  }
+}

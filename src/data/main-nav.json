@@ -72,5 +72,25 @@
         }
       ]
     }
-  ]
+  ],
+  "header": "SmartWiFi",
+  "description": "Manage your business, not your WiFi",
+  "cta": {
+    "label": "Learn more",
+    "url": "/learmore"
+  },
+  "images": {
+    "small": {
+      "url": "../assets/img/hero-small.PNG",
+      "description": ""
+    },
+    "medium": {
+      "url": "../assets/img/hero-medium.jpeg",
+      "description": ""
+    },
+    "large": {
+      "url": "../assets/img/hero-large.jpeg",
+      "description": ""
+    }
+  }
 }
