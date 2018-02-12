@@ -72,5 +72,25 @@
         }
       ]
     }
-  ]
+  ],
+  "header": "SmartWiFi",
+  "description": "WiFi so easy to manage, you can focus on your business",
+  "cta": {
+    "label": "Learn more",
+    "url": "/smartwifi"
+  },
+  "images": {
+    "small": {
+      "url": "../assets/img/hero2-small.jpeg",
+      "description": "image-hero"
+    },
+    "medium": {
+      "url": "../assets/img/hero2-medium.jpeg",
+      "description": "image-hero"
+    },
+    "large": {
+      "url": "../assets/img/hero2-large.jpeg",
+      "description": "image-hero"
+    }
+  }
 }
