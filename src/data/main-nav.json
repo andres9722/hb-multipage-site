@@ -92,5 +92,24 @@
       "url": "../assets/img/hero2-large.jpeg",
       "description": "image-hero"
     }
+  },
+  "header2": {
+    "header": "SmartWiFi",
+    "description": "WiFi so easy to manage, you can focus on your business",
+    "cta": {
+      "label": "Learn more",
+      "url": "/smartwifi"
+    },
+    "images": {
+      "small": {
+        "url": "../assets/img/hero-small.jpg"
+      },
+      "medium": {
+        "url": "../assets/img/hero-medium.jpg"
+      },
+      "large": {
+        "url": "../assets/img/hero-large.jpg"
+      }
+    }
   }
 }
