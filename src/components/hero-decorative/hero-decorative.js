@@ -1,6 +1,7 @@
 import './hero-decorative.scss'
 import template from './hero-decorative.pug'
-import heroData from '../../data/main-nav.json'
+import heroData from '../../data/data.json'
+import Breakpoints from '../utilities/breakpoints'
 
 export default class HeroDecorative {
   constructor (selector) {
@@ -20,9 +21,9 @@ export default class HeroDecorative {
   }
 
   setDefaultImage () {
-    if (window.innerWidth < 640) {
+    if (window.innerWidth < Breakpoints.size.medium.replace('px', '')) {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.small
-    } else if (window.innerWidth > 640 && window.innerWidth < 1024) {
+    } else if (window.innerWidth > Breakpoints.size.medium.replace('px', '') && window.innerWidth < Breakpoints.size.large.replace('px', '')) {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.medium
     } else {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.large
@@ -30,19 +31,15 @@ export default class HeroDecorative {
   }
 
   mediaQueries () {
-    const mediaSmall = window.matchMedia('(min-width: 320px)')
-    const mediaMedium = window.matchMedia('(min-width: 640px)')
-    const mediaLarge = window.matchMedia('(min-width: 1024px)')
-
-    mediaSmall.addListener(() => {
+    Breakpoints.matchMediaSmall().addListener(() => {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.small
     })
 
-    mediaMedium.addListener(() => {
+    Breakpoints.matchMediaMedium().addListener(() => {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.medium
     })
 
-    mediaLarge.addListener(() => {
+    Breakpoints.matchMediaLarge().addListener(() => {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.large
     })
   }
