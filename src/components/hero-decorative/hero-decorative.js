@@ -6,31 +6,44 @@ export default class HeroDecorative {
   constructor (selector) {
     this.node = document.querySelector(selector)
     this.node.innerHTML = template(heroData)
-    this.imageContainer = document.querySelector('.hero2__img')
-    this.mediaQueries(heroData)
+    this.imageContainer = this.node.querySelector('.hero2__img')
+    this.setDefaultImage()
+    this.mediaQueries()
   }
 
-  mediaQueries (heroData) {
-    let small = `url('${heroData.header2.images.small.url}')`
-    let medium = `url('${heroData.header2.images.medium.url}')`
-    let large = `url('${heroData.header2.images.large.url}')`
+  static get sizes () {
+    return {
+      small: `url('${heroData.header2.images.small.url}')`,
+      medium: `url('${heroData.header2.images.medium.url}')`,
+      large: `url('${heroData.header2.images.large.url}')`
+    }
+  }
 
-    let mediaSmall = window.matchMedia("(min-width: 320px)")
-    let mediaMedium = window.matchMedia("(max-width: 640px)")
-    let mediaLarge = window.matchMedia("(max-width: 1024px)")
+  setDefaultImage () {
+    if (window.innerWidth < 640) {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.small
+    } else if (window.innerWidth > 640 && window.innerWidth < 1024) {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.medium
+    } else {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.large
+    }
+  }
 
-    this.imageContainer.style.backgroundImage = small
+  mediaQueries () {
+    const mediaSmall = window.matchMedia('(min-width: 320px)')
+    const mediaMedium = window.matchMedia('(min-width: 640px)')
+    const mediaLarge = window.matchMedia('(min-width: 1024px)')
 
-    mediaSmall.addListener(e => {
-      this.imageContainer.style.backgroundImage = small
+    mediaSmall.addListener(() => {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.small
     })
 
-    mediaMedium.addListener(e => {
-      this.imageContainer.style.backgroundImage = medium
+    mediaMedium.addListener(() => {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.medium
     })
 
-    mediaLarge.addListener(e => {
-      this.imageContainer.style.backgroundImage = large
+    mediaLarge.addListener(() => {
+      this.imageContainer.style.backgroundImage = HeroDecorative.sizes.large
     })
   }
 }
