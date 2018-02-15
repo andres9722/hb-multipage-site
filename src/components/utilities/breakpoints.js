@@ -18,4 +18,12 @@ export default class Breakpoints {
   static matchMediaLarge () {
     return window.matchMedia(`(min-width: ${Breakpoints.size.large})`)
   }
+
+  static get sizes () {
+    return {
+      small: 320,
+      medium: 640,
+      large: 1024
+    }
+  }
 }

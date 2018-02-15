@@ -1,12 +1,12 @@
 import './hero-decorative.scss'
 import template from './hero-decorative.pug'
-import heroData from '../../data/data.json'
+import heroDecorativeData from '../../data/data.json'
 import Breakpoints from '../utilities/breakpoints'
 
 export default class HeroDecorative {
   constructor (selector) {
     this.node = document.querySelector(selector)
-    this.node.innerHTML = template(heroData)
+    this.node.innerHTML = template(heroDecorativeData)
     this.imageContainer = this.node.querySelector('.hero2__img')
     this.setDefaultImage()
     this.mediaQueries()
@@ -14,16 +14,16 @@ export default class HeroDecorative {
 
   static get sizes () {
     return {
-      small: `url('${heroData.header2.images.small.url}')`,
-      medium: `url('${heroData.header2.images.medium.url}')`,
-      large: `url('${heroData.header2.images.large.url}')`
+      small: `url('${heroDecorativeData.header2.images.small.url}')`,
+      medium: `url('${heroDecorativeData.header2.images.medium.url}')`,
+      large: `url('${heroDecorativeData.header2.images.large.url}')`
     }
   }
 
   setDefaultImage () {
-    if (window.innerWidth < Breakpoints.size.medium.replace('px', '')) {
+    if (window.innerWidth < Breakpoints.sizes.medium) {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.small
-    } else if (window.innerWidth > Breakpoints.size.medium.replace('px', '') && window.innerWidth < Breakpoints.size.large.replace('px', '')) {
+    } else if (window.innerWidth > Breakpoints.sizes.medium && window.innerWidth < Breakpoints.sizes.large) {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.medium
     } else {
       this.imageContainer.style.backgroundImage = HeroDecorative.sizes.large
