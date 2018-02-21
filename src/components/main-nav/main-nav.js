@@ -1,6 +1,6 @@
 import './main-nav.scss'
 import template from './main-nav.pug'
-import mainNavData from '../../data/main-nav.json'
+import mainNavData from '../../data/data.json'
 
 export default class MainNav {
   constructor (selector) {

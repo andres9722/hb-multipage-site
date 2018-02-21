@@ -1,6 +1,6 @@
 import './hero.scss'
 import template from './hero.pug'
-import heroData from '../../data/main-nav.json'
+import heroData from '../../data/data.json'
 
 export default class Hero {
   constructor (selector) {
