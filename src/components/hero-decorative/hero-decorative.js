@@ -1,12 +1,12 @@
 import './hero-decorative.scss'
 import template from './hero-decorative.pug'
-import heroDecorativeData from '../../data/data.json'
+import dataJson from '../../data/data.json'
 import Breakpoints from '../utilities/breakpoints'
 
 export default class HeroDecorative {
   constructor (selector) {
     this.node = document.querySelector(selector)
-    this.node.innerHTML = template(heroDecorativeData)
+    this.node.innerHTML = template(dataJson)
     this.imageContainer = this.node.querySelector('.hero2__img')
     this.setDefaultImage()
     this.mediaQueries()
@@ -14,9 +14,9 @@ export default class HeroDecorative {
 
   static get sizes () {
     return {
-      small: `url('${heroDecorativeData.header2.images.small.url}')`,
-      medium: `url('${heroDecorativeData.header2.images.medium.url}')`,
-      large: `url('${heroDecorativeData.header2.images.large.url}')`
+      small: `url('${dataJson.header2.images.small.url}')`,
+      medium: `url('${dataJson.header2.images.medium.url}')`,
+      large: `url('${dataJson.header2.images.large.url}')`
     }
   }
 
